@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<div class="m-3 text-center">
+    <h1>Login</h1>
+</div>
+<div class="container-fluid mx-auto col-11 col-lg-7 p-4">
+    <form method="POST" class="card p-4" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{message}}
+          </div>
+        {% endfor %}
+        {% endif %}
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" name="username">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" name="password">
+        </div>
+        <p class="p-2">Don't have a account <a href="/register">Register</a> </p>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <p class="p-2">For test :
+            username : prabhakar1 , password : 123
+        </p>
+    </form>
+</div>
+{% endblock %}

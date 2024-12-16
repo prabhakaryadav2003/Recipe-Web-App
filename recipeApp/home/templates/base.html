@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100" style="background-color: beige;">
+    <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="light">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-2" href="/">
+            <i class="fa-sharp fa-solid fa-leaf fa-lg"></i><strong> Recipe App </strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ms-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <i class="fa-solid fa-house fa-lg"></i>
+                  <span class="ms-1">Home</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/recipes">
+                  <i class="fa-solid fa-list fa-lg"></i>
+                  <span class="ms-1">Recipes</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/upload">
+                  <i class="fa-solid fa-upload fa-lg"></i>
+                  <span class="ms-1">Upload</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                  <i class="fa-solid fa-user-tie fa-lg"></i>
+                  <span class="ms-1">Admin</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a class="nav-link" href="/logout">
+                  <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+                  <span class="ms-1">Logout</span>
+                </a>
+                {% else %}
+                <a class="nav-link" href="/login">
+                  <i class="fa-solid fa-user fa-lg"></i>
+                  <span class="ms-1">Login</span>
+                </a>
+                {% endif %}
+              </li>
+              <li>
+                <a class="nav-link">
+                  <i class="fa-solid fa-user-circle fa-lg"></i>
+                  {% if user.is_authenticated %}
+                  <span class="ms-1">Hello, {{ user.first_name }} {{ user.last_name }}</span>
+                  {% else %}
+                  <span class="ms-1">Hello, User</span>
+                  {% endif %}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    </header>
+    
+    <main>
+    {% block body %}
+    {% endblock %}
+    </main>
+
+    <footer class="mt-auto mb-4">
+        <div class="text-center text-dark">
+            <span>
+                Copyright &copy; <script>document.write(new Date().getFullYear())</script> Prabhakar Yadav
+            </span>
+        </div>
+    </footer>
+    
+    <!-- Script -->
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
