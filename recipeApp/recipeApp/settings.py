@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=qkw0p^arki72k7c=l89!jr-5lv7f_zt(b@vjri8k0uf$3oef_'
+if DJANGO_SECRET_KEY in os.environ :
+    SECRET_KEY = os.environ('DJANGO_SECRET_KEY')
+else :
+    SECRET_KEY = 'django-insecure-=qkw0p^arki72k7c=l89!jr-5lv7f_zt(b@vjri8k0uf$3oef_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ('DJANGO_DEBUG') != 'False'
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = [""]
 
 
 # Application definition
@@ -79,12 +84,29 @@ WSGI_APPLICATION = 'recipeApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+            "OPTIONS": {
+                "init_command": "SET default_storage_engine=INNODB",
+            },
+        }
+    }
+
+else :
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+
 
 
 # Password validation
@@ -121,12 +143,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-import os
 
 STATIC_URL = '/static/'
 STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles') 
 STATICFILES_DIRS = [
-    BASE_DIR / "staticFILES",
+    os.path.join(BASE_DIR, 'staticfiles'),
 ]
 
 # Default primary key field type
