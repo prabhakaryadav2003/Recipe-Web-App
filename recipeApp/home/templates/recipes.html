@@ -18,11 +18,11 @@ Recipes
 <div class="container-fluid p-2">
     {% if data %}
         {% for recipe in data %}
-            <div class="card mb-3 col-11 col-lg-7 mx-auto">
+            <div class="card mb-3 mx-auto col-11 col-lg-7" >
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col ">
                         {% if recipe.image %}
-                        <img src="{{ recipe.image.url }}" class="img-fluid rounded-start" alt="{{ recipe.title }}">
+                        <img src="{{ recipe.image.url }}" class="img-fluid rounded-start p-3" alt="{{ recipe.title }}">
                         {% else %}
                         <img src="" class="img-fluid rounded-start" alt="Default Recipe">
                         {% endif %}
@@ -30,7 +30,7 @@ Recipes
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{ recipe.title }}</h5>
-                            <p class="card-text">{{ recipe.description|truncatechars:150 }}</p>
+                            <p class="card-text">{{ recipe.description|truncatechars:500 }}</p>
                             <a href="{% url 'detail'  %}?page={{data.number}}&id={{recipe.id}}" class="btn btn-primary">View Recipe</a>
                         </div>
                     </div>
