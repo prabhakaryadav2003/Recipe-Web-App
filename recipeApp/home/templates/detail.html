@@ -13,9 +13,16 @@ Recipe Details
     <div class="row justify-content-around g-2">
         <div class="col-11">
             <p>
+                {% if data.image %}
                 <img src="{{data.image.url}}" class="float-end img-fluid rounded col-6 p-3">
                 {{data.description}}
+                {% endif %}
             </p>
+        <div class="container-fluid">
+            <a class="btn btn-primary mb-2 fa-brands fa-youtube" href="{{data.link}}">
+            </a>
+            <a class="btn btn-primary mb-2" href="{% url 'recipes' %}?page={{page}}" role="button">&laquo; Back</a>
+        </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+User
+{% endblock %}
+{% block body %}
+<div class="container-fluid p-3">
+    <h1 class="text-center">User</h1>
+</div>
+<div class="container-fluid">
+    <div class="card col-11 col-lg-7 mx-auto p-4">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">First Name</th>
+                    <td class="text-center">{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Last Name</th>
+                    <td class="text-center">{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Username</th>
+                    <td class="text-center">{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td class="text-center">{{ user.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
