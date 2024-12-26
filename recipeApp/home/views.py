@@ -13,11 +13,15 @@ def home(request):
 
 @login_required(login_url="/login/")
 def recipes(request):
+    search = request.GET.get("search", "")
     recipe = Recipe.objects.all()
+    page_number = request.GET.get("page", 1)
+    if request.GET.get("search"):
+        recipe = recipe.filter(title__icontains=search)
+
     paginator = Paginator(recipe, 3)
-    page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    return render(request , "recipes.html", {"data" : page_obj})
+    return render(request , "recipes.html", {"data" : page_obj, "search": search})
 
 @login_required(login_url="/login/")
 def upload(request):
