@@ -1,0 +1,73 @@
+A `.gitignore` file specifies intentionally untracked files to ignore. Below is an example `.gitignore` template suited for a typical project, including Python, STM32, and web development files. You can customize it as needed for your project:  
+
+```plaintext
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Build artifacts for C/C++ or embedded projects
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+*.out
+build/
+
+# STM32-specific generated files
+*.ioc
+*.lst
+*.log
+*.dep
+*.d
+
+# Machine-specific files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+
+# Logs and debugging files
+*.log
+*.trace
+*.dmp
+
+# Node.js dependencies
+node_modules/
+
+# Static files
+*.css.map
+*.js.map
+
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Generated documentation
+docs/_build/
+
+# Ignore coverage report files
+.coverage
+coverage/
+
+# Specific to Django
+*.sqlite3
+/media/
+
+# Ignore test-related files
+test-results/
