@@ -20,14 +20,14 @@ Recipes
         {% for recipe in data %}
             <div class="card mb-3 mx-auto col-11 col-lg-7" >
                 <div class="row g-0">
-                    <div class="col ">
+                    <div class="col-md-4 col-4 ">
                         {% if recipe.image %}
                         <img src="{{ recipe.image.url }}" class="img-fluid rounded-start p-3" alt="{{ recipe.title }}">
                         {% else %}
                         <img src="" class="img-fluid rounded-start" alt="Default Recipe">
                         {% endif %}
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-8">
                         <div class="card-body">
                             <h5 class="card-title">{{ recipe.title }}</h5>
                             <p class="card-text">{{ recipe.description|truncatechars:500 }}</p>
