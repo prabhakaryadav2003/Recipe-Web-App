@@ -15,7 +15,7 @@ Recipe Details
             <p>
                 {% if data.image %}
                 <img src="{{data.image.url}}" class="float-end img-fluid rounded col-6 p-3">
-                {{data.description}}
+                {{data.description|safe}}
                 {% endif %}
             </p>
         <div class="container-fluid">
