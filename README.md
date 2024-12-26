@@ -24,11 +24,11 @@ Follow these steps to set up the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/prabhakaryadav2003/Recipe---Web-App.git
+   git clone https://github.com/prabhakaryadav2003/Recipe-Web-App.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd Recipe---Web-App
+   cd Recipe-Web-App
    ```
 3. Set up a virtual environment:
    ```bash
