@@ -44,7 +44,7 @@ if 'CSRF_COOKIE_SECURE' in os.environ:
     if os.environ.get('CSRF_COOKIE_SECURE') == 'True':
         CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = ['https://'+ALLOWED_HOSTS]
+CSRF_TRUSTED_ORIGINS = ['https://'+ site for site in ALLOWED_HOSTS]
 
 # Application definition
 
