@@ -105,7 +105,8 @@ if 'RDS_HOSTNAME' in os.environ:
             'HOST': os.environ.get('RDS_HOSTNAME'),
             'PORT': os.environ.get('RDS_PORT'),
             "OPTIONS": {
-                "init_command": "SET default_storage_engine=INNODB",
+                'ssl': {'ca': '../DigiCertGlobalRootCA.crt.pem'},
+                'init_command': "SET default_storage_engine=INNODB",
             },
         }
     }
