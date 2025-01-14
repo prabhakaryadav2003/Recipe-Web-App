@@ -40,9 +40,9 @@ elif DEBUG:
 else:
     ALLOWED_HOSTS = ["localhost"]
 
-if 'CSRF_COOKIE_SECURE' in os.environ:
-    if os.environ.get('CSRF_COOKIE_SECURE') == 'True':
-        CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True  # Ensure cookies are only sent over HTTPS
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript access to the CSRF cookie if needed
+CSRF_COOKIE_SAMESITE = 'Lax'  # Adjust for cross-origin needs if necessary
 
 CSRF_TRUSTED_ORIGINS = ['https://'+ site for site in ALLOWED_HOSTS]
 
