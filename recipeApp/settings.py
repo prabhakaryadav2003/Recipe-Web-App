@@ -35,9 +35,10 @@ else:
 
 if 'WEBSITE_HOSTNAME' in os.environ:
     ALLOWED_HOSTS = [os.environ.get('WEBSITE_HOSTNAME')]
+elif DEBUG:
+    ALLOWED_HOSTS = ["*"]
 else:
     ALLOWED_HOSTS = ["localhost"]
-
 # Application definition
 
 INSTALLED_APPS = [
