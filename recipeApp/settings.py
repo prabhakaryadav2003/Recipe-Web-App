@@ -39,6 +39,11 @@ elif DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
     ALLOWED_HOSTS = ["localhost"]
+
+if 'CSRF_COOKIE_SECURE' in os.environ:
+    if os.environ.get('CSRF_COOKIE_SECURE') == 'True':
+        CSRF_COOKIE_SECURE = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -86,7 +91,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'recipeApp.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
