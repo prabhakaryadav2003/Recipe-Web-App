@@ -40,6 +40,7 @@ elif DEBUG:
 else:
     ALLOWED_HOSTS = ["localhost"]
 
+CORS_ORIGIN_ALLOW_ALL = True
 CSRF_COOKIE_SECURE = True  # Ensure cookies are only sent over HTTPS
 CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript access to the CSRF cookie if needed
 CSRF_COOKIE_SAMESITE = 'Lax'  # Adjust for cross-origin needs if necessary
@@ -63,7 +64,8 @@ INSTALLED_APPS += EXTERNAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
